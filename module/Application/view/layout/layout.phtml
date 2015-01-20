@@ -1,0 +1,101 @@
+<?php
+namespace Application;
+
+use Application\Service\Auth;
+
+echo $this->doctype(); ?>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Project Name')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array(
+                    'rel' => 'shortcut icon',
+                    'type' => 'image/vnd.microsoft.icon',
+                    'href' => $this->basePath() . '/images/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/forms.css')
+                ->prependStylesheet($this->basePath() . '/css/navbar-fixed-top.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/font-awesome.min.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/bootstrap/bootstrap.min.css')
+        ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+                ->prependFile($this->basePath() . '/lib/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/application/layout/app.js')
+                ->prependFile($this->basePath() . '/lib/js/bootstrap/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/lib/js/jquery/jquery-2.1.1.min.js')
+        ?>
+
+        <!-- HINT: REMOVE ME IN PRODUCTION! -->
+        <script src="http://localhost:35729/livereload.js"></script>
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>">Project Name</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <?php $user = $this->session()->offsetGet('user'); ?>
+                        <li>
+                            <a href="<?php echo $this->url('home') ?>">
+                                <i class="fa fa-home"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <b>Olá, <?php echo $user->login; ?>!</b>
+                               <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="<?php echo $this->url('usuario', array('action'=>'editar-senha')) ?>">
+                                        Editar senha
+                                    </a>
+                                </li>
+                                <?php if ($user->nome_grupo == 'bot'): ?>
+                                <li>
+                                    <a href="/application/auth/limpar-cache-acl">
+                                        <i class="fa fa-cog"></i>
+                                            Limpar Cache ACL
+                                    </a>
+                                </li>
+                                <?php endif; ?>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url('logout') ?>">
+                               <i class="fa fa-sign-out"></i>
+                               Sair
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+            <?php echo $this->messages(); ?>
+            <!-- Main component for a primary marketing message or call to action -->
+            <?php echo $this->content; ?>
+
+            <hr>
+
+            <?php echo $this->partial('layout/footer.phtml'); ?>
+        </div> <!-- /container -->
+
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

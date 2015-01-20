@@ -1,0 +1,66 @@
+
+<?php
+    $proxima = $this->pagina + 1;
+    $anterior = $this->pagina - 1;
+
+    $url_primeira = '?pagina=1';
+    $url_proxima = '?pagina=' . $proxima;
+    $url_anterior = '?pagina=' . $anterior;
+
+    if (! empty($this->restricao)) {
+        $url_primeira .= '&restricao=' . $this->restricao;
+        $url_proxima  .= '&restricao=' . $this->restricao;
+        $url_anterior .= '&restricao=' . $this->restricao;
+    }
+?>
+
+<ul class="pager pull-right" style="margin: 0 0;">
+    <?php if ($this->pagina == 1): ?>
+    <li class="disabled">
+        <a href="#" onclick="return false;">
+            <i class="fa fa-angle-double-left"></i>
+            Primeira
+        </a>
+    </li>
+    <?php else: ?>
+    <li>
+        <a href="<?php echo $this->url($this->route) . $url_primeira ?>">
+            <i class="fa fa-angle-double-left"></i>
+            Primeira
+        </a>
+    </li>
+    <?php endif; ?>
+    
+    <?php if ($this->pagina == 1): ?>
+    <li class="disabled">
+        <a href="#" onclick="return false;">
+            <i class="fa fa-angle-left"></i>
+            Anterior
+        </a>
+    </li>
+    <?php else: ?>
+    <li>
+        <a href="<?php echo $this->url($this->route) . $url_anterior ?>">
+            <i class="fa fa-angle-left"></i>
+            Anterior
+        </a>
+    </li>
+    <?php endif; ?>
+    
+    <?php if ($this->count == 10): ?>
+    <li>
+        <a href="<?php echo $this->url($this->route) . $url_proxima ?>">
+            Próxima
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </li>
+    <?php else: ?>
+    <li class="disabled">
+        <a href="#" onclick="return false;">
+            Próxima
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </li>
+    <?php endif; ?>
+    
+</ul>

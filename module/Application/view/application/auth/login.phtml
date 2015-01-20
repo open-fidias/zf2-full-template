@@ -1,0 +1,30 @@
+<?php
+    $this->headScript()->appendFile($this->basePath() . '/js/application/auth/login.js');
+?>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <?php
+        $form = $this->form;
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        ?>
+        <div class="form-group">
+            <?php echo $this->formInput($form->get('username')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('username')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formInput($form->get('password')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('password')); ?>
+            </div>
+        </div>
+
+        <?php
+        echo $this->formSubmit($form->get('submit'));
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>

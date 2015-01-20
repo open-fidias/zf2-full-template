@@ -1,0 +1,73 @@
+
+<ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('home') ?>">Início</a></li>
+    <li class="active"><?php echo $title ?></li>
+</ol>
+
+
+<?php
+$form->prepare();
+echo $this->form()->openTag($form);
+
+?>
+
+<h4>
+    <?php echo $title ?>
+    <div class="pull-right">
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+</h4>
+<hr/>
+<div class="row">
+    <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+            <?php echo $this->formRow($form->get('id')); ?>
+        </div>
+    </div>
+    <div class="col-sm-5 col-md-5">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('login')); ?>
+            <?php echo $this->formInput($form->get('login')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('login')); ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 col-md-5">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('senha_atual')); ?>
+            <?php echo $this->formInput($form->get('senha_atual')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('senha_atual')); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('senha')); ?>
+            <?php echo $this->formInput($form->get('senha')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('senha')); ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('senha_repetida')); ?>
+            <?php echo $this->formInput($form->get('senha_repetida')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('senha_repetida')); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+</div>
+<?php
+    echo $this->form()->closeTag();
+?>

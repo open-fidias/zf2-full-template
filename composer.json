@@ -1,0 +1,18 @@
+{
+   "name": "open-fidias/zf2-template-full",
+   "description": "Full Template",
+   "license": "MIT",
+   "keywords": [
+      "framework",
+      "zf2"
+   ],
+   "homepage": "https://github.com/open-fidias/zf2-full-template",
+   "require": {
+      "php": ">=5.3.3",
+      "zendframework/zendframework": "2.*",
+      "phpunit/phpunit": "3.7.*",
+      "sebastian/environment": "1.0.*@dev",
+      "zendframework/zftool": "dev-master",
+      "dino/dompdf-module": "dev-master"
+   }
+}

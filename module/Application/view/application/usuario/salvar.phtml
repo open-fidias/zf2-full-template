@@ -1,0 +1,65 @@
+<?php
+    $this->headLink()->appendStylesheet($this->basePath() . '/lib/css/select2/select2.css');
+    $this->headLink()->appendStylesheet($this->basePath() . '/lib/css/select2-bootstrap3-css/select2-bootstrap.css');
+
+    $this->headScript()->appendFile($this->basePath() . '/lib/js/select2/select2.min.js');
+	$this->headScript()->appendFile($this->basePath() . '/lib/js/jquery-maskedinput/jquery.maskedinput.min.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/application/cliente/salvar-pf.js');
+?>
+
+<ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('home') ?>">Início</a></li>
+    <li><a href="<?php echo $this->url('usuario') ?>">Usuário</a></li>
+    <li class="active"><?php echo $title ?></li>
+</ol>
+
+
+<?php
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<h4>
+    <?php echo $title ?>
+    <div class="pull-right">
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+</h4>
+<hr/>
+<div class="row">
+    <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+            <?php echo $this->formRow($form->get('id')); ?>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('login')); ?>
+            <?php echo $this->formInput($form->get('login')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('login')); ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-2">
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('role_id')); ?>
+            <?php echo $this->formSelect($form->get('role_id')); ?>
+            <div class="form-errors">
+                <?php echo $this->formElementErrors($form->get('role_id')); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+</div>
+<?php
+    echo $this->form()->closeTag();
+?>

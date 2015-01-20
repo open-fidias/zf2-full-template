@@ -1,0 +1,41 @@
+<?php
+namespace Application;
+?>
+
+<?php echo $this->doctype(); ?>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Project Name')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/forms.css')
+                ->prependStylesheet($this->basePath() . '/css/navbar-fixed-top.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/font-awesome.min.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/bootstrap/bootstrap.min.css')
+        ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/lib/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/application/layout/app.js')
+                ->prependFile($this->basePath() . '/lib/js/bootstrap/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/lib/js/jquery/jquery-2.1.1.min.js')
+        ?>
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div class="container">
+            <?php echo $this->messages(); ?>
+            <!-- Main component for a primary marketing message or call to action -->
+            <?php echo $this->content; ?>
+
+            <hr>
+
+            <?php echo $this->partial('layout/footer.phtml'); ?>
+        </div> <!-- /container -->
+
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
