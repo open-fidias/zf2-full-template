@@ -1,7 +1,7 @@
 {
    "name": "open-fidias/zf2-template-full",
    "version": "0.0.0",
-   "description": "Full Template",
+   "description": "Template genérico para projetos Zend Framework 2, com Autenticação e Autorização.",
    "main": "index.js",
    "directories": {
       "doc": "docs",

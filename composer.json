@@ -1,6 +1,6 @@
 {
    "name": "open-fidias/zf2-template-full",
-   "description": "Full Template",
+   "description": "Template genérico para projetos Zend Framework 2, com Autenticação e Autorização.",
    "license": "MIT",
    "keywords": [
       "framework",
