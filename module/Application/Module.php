@@ -26,11 +26,11 @@ class Module {
     const PRIORIDADE_DISPATCH = 100;
 
     public function onBootstrap($e) {
-        $translator = new Translator();
+        $translator = $e->getApplication()->getServiceManager()->get('translator');
         $translator->addTranslationFile(
                 'phpArray', './vendor/zendframework/zendframework/resources/languages/pt_BR/Zend_Validate.php'
         );
-        AbstractValidator::setDefaultTranslator($translator);
+        AbstractValidator::setDefaultTranslator(new \Zend\Mvc\I18n\Translator($translator));
 
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
